@@ -1,8 +1,5 @@
 # Simple Pick-and-Place: Isaac Sim + MoveIt2
 
-A simple pick-and-place implementation using NVIDIA Isaac Sim for simulation
-and MoveIt2 for motion planning, built on ROS 2 Jazzy.
-
 A pick-and-place implementation using **NVIDIA Isaac Sim** for simulation and **MoveIt2** for motion planning, built on **ROS 2 Jazzy**.
 
 ![Pick and place demo](media/demo.gif)
