@@ -3,6 +3,8 @@
 A simple pick-and-place implementation using NVIDIA Isaac Sim for simulation
 and MoveIt2 for motion planning, built on ROS 2 Jazzy.
 
+![Pick and place demo](media/demo.gif)
+
 ## Description
 
 This workspace connects Isaac Sim to MoveIt2 through a ros2_control
