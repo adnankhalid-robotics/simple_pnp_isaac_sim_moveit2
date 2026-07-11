@@ -1,21 +1,14 @@
 cmake_minimum_required(VERSION 3.5)
 project(isaac_moveit_package)
 
-# =========================
-# CORE DEPENDENCIES
-# =========================
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 
-# --- Added for cube-yaw orientation math in cube_gripper_data ---
 find_package(tf2 REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 
-# =========================
-# ROS2 INTERFACES (SERVICES)
-# =========================
 find_package(rosidl_default_generators REQUIRED)
 find_package(rosidl_default_runtime REQUIRED)
 
@@ -25,9 +18,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 
 ament_export_dependencies(rosidl_default_runtime)
 
-# =========================
 # EXECUTABLES
-# =========================
 
 add_executable(motion_node src/motion.cpp)
 ament_target_dependencies(motion_node
@@ -65,10 +56,7 @@ install(TARGETS gripper_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
-
-# -------------------------
 # SERVICE CLIENT NODE
-# -------------------------
 
 add_executable(cube_client_node src/cube_client.cpp)
 ament_target_dependencies(cube_client_node
@@ -80,12 +68,7 @@ install(TARGETS cube_client_node
 )
 
 
-
-
-
-# =========================
-# TYPESUPPORT LINKING (IMPORTANT FIX)
-# =========================
+# TYPESUPPORT LINKING
 
 rosidl_get_typesupport_target(cpp_typesupport_target
   ${PROJECT_NAME} "rosidl_typesupport_cpp"
@@ -104,10 +87,7 @@ target_link_libraries(gripper_node
 )
 
 
-
-# =========================
 # INSTALL FILES
-# =========================
 
 install(DIRECTORY
   rviz2
@@ -120,7 +100,4 @@ install(PROGRAMS
   DESTINATION lib/${PROJECT_NAME}
 )
 
-# =========================
-# FINAL
-# =========================
 ament_package()

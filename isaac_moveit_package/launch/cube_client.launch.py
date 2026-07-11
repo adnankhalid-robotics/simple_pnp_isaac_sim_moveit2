@@ -5,7 +5,7 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, TimerAction
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-from launch_ros.parameter_descriptions import ParameterValue  # ✅ FIX: for typed params
+from launch_ros.parameter_descriptions import ParameterValue 
 from ament_index_python.packages import get_package_share_directory
 
 from moveit_configs_utils import MoveItConfigsBuilder
@@ -24,11 +24,7 @@ def generate_launch_description():
         default_value="true",
     )
 
-    # -------------------------
-    # ✅ TIME SYNC FIX:
-    # Force use_sim_time to be a BOOL, not the string "true".
-    # Define once and reuse on every node below.
-    # -------------------------
+
     use_sim_time_param = {
         "use_sim_time": ParameterValue(
             LaunchConfiguration("use_sim_time"), value_type=bool
@@ -53,12 +49,9 @@ def generate_launch_description():
         .to_moveit_configs()
     )
 
-    # -------------------------
-    # GLOBAL PARAM SERVER FIX (IMPORTANT)
-    # -------------------------
+
     moveit_params = moveit_config.to_dict()
 
-    # -------------------------
     move_group_node = Node(
         package="moveit_ros_move_group",
         executable="move_group",
@@ -94,7 +87,7 @@ def generate_launch_description():
             "0.0", "0.0", "0.0",
             "world", "panda_link0"
         ],
-        parameters=[use_sim_time_param],  # ✅ FIX: added
+        parameters=[use_sim_time_param], 
     )
 
     robot_state_publisher = Node(
@@ -139,9 +132,6 @@ def generate_launch_description():
     )
 
 
-    # -------------------------
-    # 🔥 delayed motion node
-    # -------------------------
     cube_client_cpp_node = TimerAction(
         period=5.0,   # wait for SRDF + MoveGroup + controllers
         actions=[

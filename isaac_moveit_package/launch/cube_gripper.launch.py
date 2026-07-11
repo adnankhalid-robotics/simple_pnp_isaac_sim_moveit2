@@ -128,9 +128,7 @@ def generate_launch_description():
         output="screen",
     )
 
-    # -------------------------
-    # 🔥 FIXED: delayed motion node
-    # -------------------------
+
     cube_gripper_cpp_node = TimerAction(
         period=5.0,   # wait for SRDF + MoveGroup + controllers
         actions=[

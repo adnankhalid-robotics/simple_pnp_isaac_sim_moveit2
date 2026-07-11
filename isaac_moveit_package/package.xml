@@ -19,62 +19,35 @@
     https://forums.developer.nvidia.com/c/omniverse/simulation/69
   </url>
 
-  <!-- ========================= -->
-  <!-- BUILD TOOL -->
-  <!-- ========================= -->
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <!-- ========================= -->
-  <!-- ROS2 CORE -->
-  <!-- ========================= -->
   <depend>rclcpp</depend>
   <depend>rclpy</depend>
 
-  <!-- ========================= -->
-  <!-- MOVEIT -->
-  <!-- ========================= -->
   <depend>moveit</depend>
   <depend>moveit_ros_planning_interface</depend>
   <depend>moveit_resources_panda_moveit_config</depend>
   <depend>moveit_simple_controller_manager</depend>
 
-  <!-- ========================= -->
-  <!-- TF2 (for cube-yaw orientation math) -->
-  <!-- ========================= -->
   <depend>tf2</depend>
   <depend>tf2_geometry_msgs</depend>
 
-  <!-- ========================= -->
-  <!-- ROS2 CONTROL -->
-  <!-- ========================= -->
   <depend>ros2_control</depend>
   <depend>ros2_controllers</depend>
   <depend>topic_based_ros2_control</depend>
 
-  <!-- ========================= -->
-  <!-- VISUALIZATION -->
-  <!-- ========================= -->
   <depend>robot_state_publisher</depend>
   <depend>visualization_msgs</depend>
   <exec_depend>rviz2</exec_depend>
 
-  <!-- ========================= -->
-  <!-- LAUNCH -->
-  <!-- ========================= -->
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>
 
-  <!-- ========================= -->
-  <!-- 🔥 ROSIDL (CRITICAL FIX) -->
-  <!-- ========================= -->
   <build_depend>rosidl_default_generators</build_depend>
   <exec_depend>rosidl_default_runtime</exec_depend>
 
   <member_of_group>rosidl_interface_packages</member_of_group>
 
-  <!-- ========================= -->
-  <!-- EXPORT -->
-  <!-- ========================= -->
   <export>
     <build_type>ament_cmake</build_type>
   </export>

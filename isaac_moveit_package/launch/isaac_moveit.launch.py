@@ -12,9 +12,7 @@ from moveit_configs_utils import MoveItConfigsBuilder
 
 def generate_launch_description():
 
-    # -------------------------
-    # Launch arguments
-    # -------------------------
+
     ros2_control_hardware_type = DeclareLaunchArgument(
         "ros2_control_hardware_type",
         default_value="isaac",
@@ -27,9 +25,7 @@ def generate_launch_description():
         description="Use simulation clock",
     )
 
-    # -------------------------
-    # MoveIt config
-    # -------------------------
+
     moveit_config = (
         MoveItConfigsBuilder("moveit_resources_panda")
         .robot_description(
@@ -48,9 +44,7 @@ def generate_launch_description():
         .to_moveit_configs()
     )
 
-    # -------------------------
-    # MoveGroup (MoveIt core)
-    # -------------------------
+
     move_group_node = Node(
         package="moveit_ros_move_group",
         executable="move_group",
@@ -61,9 +55,7 @@ def generate_launch_description():
         ],
     )
 
-    # -------------------------
-    # RViz
-    # -------------------------
+
     rviz_config_file = os.path.join(
         get_package_share_directory("isaac_moveit"),
         "rviz2",
@@ -82,9 +74,7 @@ def generate_launch_description():
         ],
     )
 
-    # -------------------------
-    # TF world → robot
-    # -------------------------
+
     world2robot_tf_node = Node(
         package="tf2_ros",
         executable="static_transform_publisher",
@@ -97,9 +87,7 @@ def generate_launch_description():
         parameters=[{"use_sim_time": LaunchConfiguration("use_sim_time")}],
     )
 
-    # -------------------------
-    # Robot state publisher
-    # -------------------------
+
     robot_state_publisher = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -110,14 +98,13 @@ def generate_launch_description():
         ],
     )
 
-    # -------------------------
-    # ros2_control node
-    # -------------------------
+
     ros2_controllers_path = os.path.join(
         get_package_share_directory("moveit_resources_panda_moveit_config"),
         "config",
         "ros2_controllers.yaml",
     )
+
 
     ros2_control_node = Node(
         package="controller_manager",
@@ -132,14 +119,13 @@ def generate_launch_description():
         ],
     )
 
-    # -------------------------
-    # Controllers
-    # -------------------------
+
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["joint_state_broadcaster", "-c", "/controller_manager"],
     )
+
 
     panda_arm_controller_spawner = Node(
         package="controller_manager",
@@ -147,9 +133,7 @@ def generate_launch_description():
         arguments=["panda_arm_controller", "-c", "/controller_manager"],
     )
 
-    # -------------------------
-    # Isaac gripper bridge
-    # -------------------------
+
     gripper_to_isaac_bridge = Node(
         package="isaac_moveit",
         executable="gripper_to_isaac.py",
@@ -158,23 +142,7 @@ def generate_launch_description():
         parameters=[{"use_sim_time": LaunchConfiguration("use_sim_time")}],
     )
 
-    # -------------------------
-    # 🔥 YOUR C++ MOVEIT NODE (FIX IS HERE)
-    # -------------------------
-    #panda_cpp_node = Node(
-    #    package="isaac_moveit",
-    #    executable="panda_moveit_cpp",
-    #    name="panda_moveit_cpp",
-    #    output="screen",
-    #    parameters=[
-    #        moveit_config.to_dict(),
-    #        {"use_sim_time": LaunchConfiguration("use_sim_time")},
-    #    ],
-    #)
 
-    # -------------------------
-    # Launch everything
-    # -------------------------
     return LaunchDescription([
         ros2_control_hardware_type,
         use_sim_time,
@@ -191,6 +159,4 @@ def generate_launch_description():
 
         gripper_to_isaac_bridge,
 
-        # ✅ Your C++ auto planner node
-        #panda_cpp_node,
     ])
