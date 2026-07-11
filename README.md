@@ -39,15 +39,27 @@ ros2 launch isaac_moveit_package <your_launch_file>.launch.py
 
 ## Demo # 1 : Isaac Sim & Rviz
 
-1. Go to Isaac Sim .
-2. Run the command below (python):
+1. From Isaac Sim. menu -> window -> Examples -> Robotics Examples -> ROS2 -> MOVEIT -> FRANKA MoveIt -> Load Sample Scene 
+2. Run the command below:
+
+```bash
+ros2 launch isaac_moveit_package isaac_moveit.launch.py
+```
+
+3. In rviz move the goal robot (orange) to some pose and then click plan and execute button on rviz.
+4. The robot in Isaac Sim and rviz will be same.
 
 
 ## Demo # 2 : Isaac Sim + Moveit2
 
-1. Go to Isaac Sim .
-2. Run the command below (motion node):
+1. From Isaac Sim. menu -> window -> Examples -> Robotics Examples -> ROS2 -> MOVEIT -> FRANKA MoveIt -> Load Sample Scene 
+2. Run the command below:
 
+```bash
+ros2 launch isaac_moveit_package motion.launch.py
+```
+3. It will run src/motion.cpp code to move the robot to a pre-defined pose in cartesian space.
+4. Robot motion in rviz and Isaac Sim is synchronized. 
 
 ## Demo # 3 : Isaac Sim + Moveit2 + ROS service client
 
