@@ -44,17 +44,6 @@ install(TARGETS cube_gripper_node
 )
 
 
-# -------------------------
-
-add_executable(gripper_node src/gripper.cpp)
-ament_target_dependencies(gripper_node
-  rclcpp
-  moveit_ros_planning_interface
-)
-
-install(TARGETS gripper_node
-  DESTINATION lib/${PROJECT_NAME}
-)
 
 # SERVICE CLIENT NODE
 
@@ -82,9 +71,6 @@ target_link_libraries(cube_gripper_node
   "${cpp_typesupport_target}"
 )
 
-target_link_libraries(gripper_node
-  "${cpp_typesupport_target}"
-)
 
 
 # INSTALL FILES
