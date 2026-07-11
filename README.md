@@ -64,16 +64,17 @@ ros2 launch isaac_moveit_package motion.launch.py
 
 ## Demo # 3 : Pick-and-Place: Isaac Sim + MoveIt2
 
-1. Create -> Shape -> Cube, 
-2. Select cube -> Scale : set dimensions to 0.03, 0.03, 0.03 -> Translate : Z=0.15
-3. Cube -> Add -> Physics -> Collision preset
-4. On Stage keep the Cube under Franka
-5. Select ActionGraph -> Open Graph -> create client server for the position and orientation of the cube 
-6. Alternatively you can load panda.usd in Isaac-sim
-7. Run the simulation
-8. Run the command below:
+1. load panda_isaac.usd in Isaac-sim and run the simulation.
+2. Run the command below.
 
 ```bash
 ros2 launch isaac_moveit_package cube_gripper.launch.py
 ```
-9. It will run run src/cube_gripper.cpp
+3. It will run run src/cube_gripper.cpp
+4. You can also verify the service in another node by ros2 service list
+
+```bash
+ros2 service list
+```
+It will give you /cube_pose
+
