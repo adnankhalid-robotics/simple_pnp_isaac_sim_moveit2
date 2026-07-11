@@ -61,13 +61,8 @@ ros2 launch isaac_moveit_package motion.launch.py
 3. It will run src/motion.cpp code to move the robot to a pre-defined pose in cartesian space.
 4. Robot motion in rviz and Isaac Sim is synchronized. 
 
-## Demo # 3 : Isaac Sim + Moveit2 + ROS service client
 
-1. Go to Isaac Sim .
-2. Run the command below (client node):
-
-
-## Demo # 4 : Pick-and-Place: Isaac Sim + MoveIt2
+## Demo # 3 : Pick-and-Place: Isaac Sim + MoveIt2
 
 1. Create -> Shape -> Cube, 
 2. Select cube -> Scale : set dimensions to 0.03, 0.03, 0.03 -> Translate : Z=0.15
