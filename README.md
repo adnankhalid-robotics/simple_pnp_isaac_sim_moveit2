@@ -3,7 +3,19 @@
 A simple pick-and-place implementation using NVIDIA Isaac Sim for simulation
 and MoveIt2 for motion planning, built on ROS 2 Jazzy.
 
+A pick-and-place implementation using **NVIDIA Isaac Sim** for simulation and **MoveIt2** for motion planning, built on **ROS 2 Jazzy**.
+
 ![Pick and place demo](media/demo.gif)
+
+## Table of Contents
+
+- [Description](#description)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Demos](#demos)
+  - [Demo 1: Isaac Sim & RViz](#demo-1-isaac-sim--rviz)
+  - [Demo 2: Isaac Sim + MoveIt2 (Cartesian Motion)](#demo-2-isaac-sim--moveit2-cartesian-motion)
+  - [Demo 3: Pick-and-Place](#demo-3-pick-and-place)
 
 ## Description
 
@@ -41,42 +53,49 @@ ros2 launch isaac_moveit_package <your_launch_file>.launch.py
 
 ## Demo # 1 : Isaac Sim & Rviz
 
-1. From Isaac Sim. menu -> window -> Examples -> Robotics Examples -> ROS2 -> MOVEIT -> FRANKA MoveIt -> Load Sample Scene 
-2. Run the command below:
+Basic teleoperation — plan a goal pose in RViz and mirror it in Isaac Sim.
+
+1. In Isaac Sim, go to **Menu → Window → Examples → Robotics Examples → ROS 2 → MoveIt → Franka MoveIt → Load Sample Scene**.
+2. Launch the bridge:
 
 ```bash
 ros2 launch isaac_moveit_package isaac_moveit.launch.py
 ```
 
-3. In rviz move the goal robot (orange) to some pose and then click plan and execute button on rviz.
-4. The robot in Isaac Sim and rviz will be same.
+3. In RViz, drag the goal robot (shown in orange) to a target pose, then click **Plan and Execute**.
+4. The robot in Isaac Sim and RViz will move identically.
 
 
 ## Demo # 2 : Isaac Sim + Moveit2
 
-1. From Isaac Sim. menu -> window -> Examples -> Robotics Examples -> ROS2 -> MOVEIT -> FRANKA MoveIt -> Load Sample Scene 
-2. Run the command below:
+Programmatic motion to a predefined Cartesian pose.
+
+1. In Isaac Sim, go to **Menu → Window → Examples → Robotics Examples → ROS 2 → MoveIt → Franka MoveIt → Load Sample Scene**.
+2. Launch the motion node:
 
 ```bash
 ros2 launch isaac_moveit_package motion.launch.py
 ```
-3. It will run src/motion.cpp code to move the robot to a pre-defined pose in cartesian space.
-4. Robot motion in rviz and Isaac Sim is synchronized. 
+
+3. This runs `src/motion.cpp`, moving the robot to a predefined pose in Cartesian space.
+4. Robot motion in RViz and Isaac Sim stays synchronized.
 
 
-## Demo # 3 : Pick-and-Place: Isaac Sim + MoveIt2
+## Demo # 3 : Pick-and-Place
 
-1. load panda_isaac.usd in Isaac-sim and run the simulation.
-2. Run the command below.
+Full pick-and-place with gripper control.
 
-```bash
-ros2 launch isaac_moveit_package cube_gripper.launch.py
-```
-3. It will run run src/cube_gripper.cpp
-4. You can also verify the service in another node by ros2 service list
+1. Load `panda_isaac.usd` in Isaac Sim and start the simulation.
+2. Launch the pick-and-place node:
 
 ```bash
-ros2 service list
+   ros2 launch isaac_moveit_package cube_gripper.launch.py
 ```
-It will give you /cube_pose
 
+3. This runs `src/cube_gripper.cpp`.
+4. Verify the exposed service in another terminal:
+
+```bash
+   ros2 service list
+```
+   You should see `/cube_pose` in the output.
