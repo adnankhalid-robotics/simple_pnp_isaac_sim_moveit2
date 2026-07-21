@@ -26,7 +26,7 @@ Clone into the `src` folder of your ROS 2 workspace:
 
 ```bash
 cd ~/jazzyws/src
-git clone https://github.com/Adnan4666/simple_pnp_isaac_sim_moveit2.git
+git clone https://github.com/adnankhalid-robotics/simple_pnp_isaac_sim_moveit2.git
 ```
 
 Install dependencies and build:
@@ -80,7 +80,7 @@ ros2 launch isaac_moveit_package motion.launch.py
 
 ## Demo # 3 : Pick-and-Place
 
-Full pick-and-place with gripper control.
+pick-and-place.
 
 1. Load `panda_isaac.usd` in Isaac Sim and start the simulation.
 2. Launch the pick-and-place node:
@@ -96,3 +96,37 @@ Full pick-and-place with gripper control.
    ros2 service list
 ```
    You should see `/cube_pose` in the output.
+   
+## Demo # 4 : Pick-and-Place with camera 
+
+Pick and Place with perception module.
+
+![Pick and place with camera demo](media/robot.png)
+
+1. Load `panda_isaac.usd` in Isaac Sim and start the simulation.
+2. In one terminal run the cube detector node as given below.
+
+```bash
+ros2 run isaac_moveit_package cube_detector.py
+```
+3. In second terminal run the cube detector node as given below to check the service is running. If that works then proceed with step 4.
+
+```bash
+ros2 run isaac_moveit_package cube_client_position_node 
+```
+
+4. Verify the detected cube through this command in the second terminal 
+
+```bash
+ros2 run image_view image_view --ros-args -r image:=/red_cube/image
+```
+
+![Detected Cube](media/cube.png)
+
+5. In the second terminal launch the pick-and-place node witht the command below.
+
+```bash
+   ros2 launch isaac_moveit_package cube_gripper_camera.launch.py
+```
+
+
