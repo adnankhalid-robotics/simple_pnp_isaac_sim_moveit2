@@ -13,6 +13,7 @@ A pick-and-place implementation using **NVIDIA Isaac Sim** for simulation and **
   - [Demo 1: Isaac Sim & RViz](#demo-1-isaac-sim--rviz)
   - [Demo 2: Isaac Sim + MoveIt2 (Cartesian Motion)](#demo-2-isaac-sim--moveit2-cartesian-motion)
   - [Demo 3: Pick-and-Place](#demo-3-pick-and-place)
+  - [Demo 4: Pick-and-Place](#demo-4-pick-and-place with camera)
 
 ## Description
 
