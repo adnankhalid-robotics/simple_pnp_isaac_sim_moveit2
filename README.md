@@ -3,17 +3,16 @@
 A pick-and-place implementation using **NVIDIA Isaac Sim** for simulation and **MoveIt2** for motion planning, built on **ROS 2 Jazzy**.
 
 ![Pick and place demo](media/demo.gif)
-
+  
 ## Table of Contents
 
 - [Description](#description)
 - [Setup](#setup)
 - [Usage](#usage)
-- [Demos](#demos)
-  - [Demo 1: Isaac Sim & RViz](# Demo # 1 : Isaac Sim & Rviz)
-  - [Demo 2: Isaac Sim + MoveIt2 (Cartesian Motion)](#demo-2-isaac-sim--moveit2-cartesian-motion)
-  - [Demo 3: Pick-and-Place](#demo-3-pick-and-place)
-  - [Demo 4: Pick-and-Place](#demo-4-pick-and-place with camera)
+- [Demo # 1 : Isaac Sim & Rviz](#demo--1--isaac-sim--rviz)
+- [Demo # 2 : Isaac Sim + Moveit2](#demo--2--isaac-sim--moveit2)
+- [Demo # 3 : Pick-and-Place](#demo--3--pick-and-place)
+- [Demo # 4 : Pick-and-Place with camera](#demo--4--pick-and-place-with-camera)
 
 ## Description
 
