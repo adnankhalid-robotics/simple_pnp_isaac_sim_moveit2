@@ -134,8 +134,8 @@ def generate_launch_description():
         actions=[
             Node(
                 package="isaac_moveit_package",
-                executable="cube_gripper_node",
-                name="cube_gripper",
+                executable="cube_gripper_camera_node",
+                name="cube_gripper_camera",
                 output="screen",
                 parameters=[
                     moveit_params,

@@ -14,6 +14,7 @@ find_package(rosidl_default_runtime REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/CubePose.srv"
+  "srv/CubePosition.srv"
 )
 
 ament_export_dependencies(rosidl_default_runtime)
@@ -44,6 +45,17 @@ install(TARGETS cube_gripper_node
 )
 
 
+add_executable(cube_gripper_camera_node src/cube_gripper_camera.cpp)
+ament_target_dependencies(cube_gripper_camera_node
+  rclcpp
+  moveit_ros_planning_interface
+)
+
+install(TARGETS cube_gripper_camera_node
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+
 
 # SERVICE CLIENT NODE
 
@@ -53,6 +65,15 @@ ament_target_dependencies(cube_client_node
 )
 
 install(TARGETS cube_client_node
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+add_executable(cube_client_position_node src/cube_client_position.cpp)
+ament_target_dependencies(cube_client_position_node
+  rclcpp
+)
+
+install(TARGETS cube_client_position_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -67,10 +88,17 @@ target_link_libraries(cube_client_node
   "${cpp_typesupport_target}"
 )
 
+target_link_libraries(cube_client_position_node
+  "${cpp_typesupport_target}"
+)
+
 target_link_libraries(cube_gripper_node
   "${cpp_typesupport_target}"
 )
 
+target_link_libraries(cube_gripper_camera_node
+  "${cpp_typesupport_target}"
+)
 
 
 # INSTALL FILES
@@ -82,7 +110,7 @@ install(DIRECTORY
 )
 
 install(PROGRAMS
-  scripts/gripper_to_isaac.py
+  scripts/gripper_to_isaac.py scripts/cube_detector.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
