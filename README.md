@@ -80,7 +80,7 @@ ros2 launch isaac_moveit_package motion.launch.py
 
 ## Demo # 3 : Pick-and-Place
 
-pick-and-place.
+A pick-and-place task using a ROS 2 service-client architecture, where an Isaac Sim Action Graph publishes the target cube's pose (position and orientation) to the client, which is then used by MoveIt2 to plan and execute the pick-and-place motion.
 
 1. Load `panda_isaac.usd` in Isaac Sim and start the simulation.
 2. Launch the pick-and-place node:
@@ -100,6 +100,9 @@ pick-and-place.
 ## Demo # 4 : Pick-and-Place with camera 
 
 Pick and Place with perception module.
+## Demo # 4 : Pick-and-Place with camera
+
+Pick-and-place with a perception module, using a camera added to the Isaac Sim scene. A Python ROS 2 node detects the cube's position from the camera image and exposes it through a service, which is then used by MoveIt2 to plan and execute the pick-and-place motion.
 
 ![Pick and place with camera demo](media/robot.png)
 
