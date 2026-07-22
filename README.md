@@ -129,4 +129,4 @@ ros2 run image_view image_view --ros-args -r image:=/red_cube/image
    ros2 launch isaac_moveit_package cube_gripper_camera.launch.py
 ```
 
-
+![Pick and Place Camera Demo](media/pnp.png)
