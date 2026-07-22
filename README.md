@@ -103,7 +103,7 @@ Pick and Place with perception module.
 
 ![Pick and place with camera demo](media/robot.png)
 
-1. Load `panda_isaac.usd` in Isaac Sim and start the simulation.
+1. Load `panda_isaac_camera.usd` in Isaac Sim and start the simulation.
 2. In one terminal run the cube detector node as given below.
 
 ```bash
